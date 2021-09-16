@@ -6,6 +6,7 @@
 [![DevOps](https://github.com/VictrCV/iwvg-devops-Claramunt-Victor/actions/workflows/test-sonar.yml/badge.svg)](https://github.com/VictrCV/iwvg-devops-Claramunt-Victor/actions/workflows/test-sonar.yml)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=VictrCV_iwvg-devops-Claramunt-Victor&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=VictrCV_iwvg-devops-Claramunt-Victor)
 [![BCH compliance](https://bettercodehub.com/edge/badge/VictrCV/iwvg-devops-Claramunt-Victor?branch=develop)](https://bettercodehub.com/results/VictrCV/iwvg-devops-Claramunt-Victor)
+[![Heroku broken](https://iwvg-devops-claramunt-victor.herokuapp.com/system/version-badge)](https://iwvg-devops-claramunt-victor.herokuapp.com/swagger-ui.html)
 
 ### :gear: Instalación del proyecto
 1. Clonar el repositorio en tu equipo, **mediante consola**:
