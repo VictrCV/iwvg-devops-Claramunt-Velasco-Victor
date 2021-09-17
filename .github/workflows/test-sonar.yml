@@ -18,7 +18,7 @@ jobs:
         if: success() # always() failure() success()
         run: >
           mvn -B verify -DskipTests sonar:sonar
-          -Dsonar.projectKey=VictrCV_iwvg-devops-Claramunt-Victor
+          -Dsonar.projectKey=VictrCV###_iwvg-devops-Claramunt-Victor
           -Dsonar.organization=victrcv
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.login=$SONAR_TOKEN
