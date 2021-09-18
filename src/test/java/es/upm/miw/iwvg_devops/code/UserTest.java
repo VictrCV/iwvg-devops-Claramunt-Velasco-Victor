@@ -26,11 +26,11 @@ public class UserTest {
 
     @Test
     void testUserWithoutParams(){
-        user = new User();
-        assertNull(user.getId());
-        assertNull(user.getName());
-        assertNull(user.getFamilyName());
-        assertEquals(new ArrayList<>(), user.getFractions());
+        this.user = new User();
+        assertNull(this.user.getId());
+        assertNull(this.user.getName());
+        assertNull(this.user.getFamilyName());
+        assertEquals(new ArrayList<>(), this.user.getFractions());
     }
 
     @Test
