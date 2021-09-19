@@ -40,7 +40,7 @@ public class Fraction {
     }
 
     public int getNumerator() {
-        return numerator;
+        return this.numerator;
     }
 
     public void setNumerator(int numerator) {
@@ -48,7 +48,7 @@ public class Fraction {
     }
 
     public int getDenominator() {
-        return denominator;
+        return this.denominator;
     }
 
     public void setDenominator(int denominator) {
@@ -56,7 +56,66 @@ public class Fraction {
     }
 
     public double decimal() {
-        return (double) numerator / denominator;
+        return (double) this.numerator / this.denominator;
+    }
+
+    public boolean isProper(){
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper(){
+        return !isProper();
+    }
+
+    public boolean isEquivalent(Fraction otherFraction){
+        return this.numerator * otherFraction.getDenominator() == this.denominator * otherFraction.getNumerator();
+    }
+
+    public Fraction add(Fraction otherFraction){
+        if (this.denominator == otherFraction.getDenominator())
+            return new Fraction(this.numerator + otherFraction.numerator, this.denominator);
+        else{
+            int denominator = lcm(this.denominator, otherFraction.getDenominator());
+            int numerator = denominator/this.denominator * this.numerator +
+                    denominator/otherFraction.getDenominator() * otherFraction.getNumerator();
+            return simplify(new Fraction(numerator, denominator));
+        }
+    }
+
+    public Fraction multiply(Fraction otherFraction){
+        int newNum = this.numerator * otherFraction.getNumerator();
+        int newDen = this.denominator * otherFraction.getDenominator();
+        return simplify(new Fraction(newNum, newDen));
+    }
+
+    public Fraction divide(Fraction otherFraction){
+        int newNum = this.numerator * otherFraction.getDenominator();
+        int newDen = this.denominator * otherFraction.getNumerator();
+        return simplify(new Fraction(newNum, newDen));
+    }
+
+    private int lcm(int a, int b) {
+        if (a == 0 || b == 0) {
+            return 0;
+        }
+        int absA = Math.abs(a);
+        int absB = Math.abs(b);
+        int absHigherNumber = Math.max(absA, absB);
+        int absLowerNumber = Math.min(absA, absB);
+        int lcm = absHigherNumber;
+        while (lcm % absLowerNumber != 0) {
+            lcm += absHigherNumber;
+        }
+        return lcm;
+    }
+
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
+    private Fraction simplify(Fraction fraction) {
+        int gcd = gcd(fraction.getNumerator(), fraction.getDenominator());
+        return new Fraction(fraction.getNumerator()/gcd, fraction.getDenominator()/gcd);
     }
 
     @Override
