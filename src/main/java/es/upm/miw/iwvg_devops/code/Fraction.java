@@ -78,18 +78,30 @@ public class Fraction {
             int denominator = lcm(this.denominator, otherFraction.getDenominator());
             int numerator = denominator/this.denominator * this.numerator +
                     denominator/otherFraction.getDenominator() * otherFraction.getNumerator();
-            return new Fraction(numerator, denominator);
+            return simplify(new Fraction(numerator, denominator));
         }
     }
 
-    public int lcm(int n1, int n2) {
-        if (n1 == 0 || n2 == 0) {
+    public Fraction multiply(Fraction otherFraction){
+        int newNum = this.numerator * otherFraction.getNumerator();
+        int newDen = this.denominator * otherFraction.getDenominator();
+        return simplify(new Fraction(newNum, newDen));
+    }
+
+    public Fraction divide(Fraction otherFraction){
+        int newNum = this.numerator * otherFraction.getDenominator();
+        int newDen = this.denominator * otherFraction.getNumerator();
+        return simplify(new Fraction(newNum, newDen));
+    }
+
+    private int lcm(int a, int b) {
+        if (a == 0 || b == 0) {
             return 0;
         }
-        int absN1 = Math.abs(n1);
-        int absN2 = Math.abs(n2);
-        int absHigherNumber = Math.max(absN1, absN2);
-        int absLowerNumber = Math.min(absN1, absN2);
+        int absA = Math.abs(a);
+        int absB = Math.abs(b);
+        int absHigherNumber = Math.max(absA, absB);
+        int absLowerNumber = Math.min(absA, absB);
         int lcm = absHigherNumber;
         while (lcm % absLowerNumber != 0) {
             lcm += absHigherNumber;
@@ -97,14 +109,13 @@ public class Fraction {
         return lcm;
     }
 
-    public Fraction multiply(Fraction otherFraction){
-        return new Fraction(this.numerator * otherFraction.getNumerator(),
-                this.denominator * otherFraction.getDenominator());
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 
-    public Fraction divide(Fraction otherFraction){
-        return new Fraction(this.numerator * otherFraction.getDenominator(),
-                this.denominator * otherFraction.getNumerator());
+    private Fraction simplify(Fraction fraction) {
+        int gcd = gcd(fraction.getNumerator(), fraction.getDenominator());
+        return new Fraction(fraction.getNumerator()/gcd, fraction.getDenominator()/gcd);
     }
 
     @Override
