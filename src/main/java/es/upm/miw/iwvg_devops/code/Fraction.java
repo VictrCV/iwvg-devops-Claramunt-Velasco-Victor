@@ -40,7 +40,7 @@ public class Fraction {
     }
 
     public int getNumerator() {
-        return numerator;
+        return this.numerator;
     }
 
     public void setNumerator(int numerator) {
@@ -48,7 +48,7 @@ public class Fraction {
     }
 
     public int getDenominator() {
-        return denominator;
+        return this.denominator;
     }
 
     public void setDenominator(int denominator) {
@@ -56,7 +56,55 @@ public class Fraction {
     }
 
     public double decimal() {
-        return (double) numerator / denominator;
+        return (double) this.numerator / this.denominator;
+    }
+
+    public boolean isProper(){
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper(){
+        return !isProper();
+    }
+
+    public boolean isEquivalent(Fraction otherFraction){
+        return this.numerator * otherFraction.getDenominator() == this.denominator * otherFraction.getNumerator();
+    }
+
+    public Fraction add(Fraction otherFraction){
+        if (this.denominator == otherFraction.getDenominator())
+            return new Fraction(this.numerator + otherFraction.numerator, this.denominator);
+        else{
+            int denominator = lcm(this.denominator, otherFraction.getDenominator());
+            int numerator = denominator/this.denominator * this.numerator +
+                    denominator/otherFraction.getDenominator() * otherFraction.getNumerator();
+            return new Fraction(numerator, denominator);
+        }
+    }
+
+    public int lcm(int n1, int n2) {
+        if (n1 == 0 || n2 == 0) {
+            return 0;
+        }
+        int absN1 = Math.abs(n1);
+        int absN2 = Math.abs(n2);
+        int absHigherNumber = Math.max(absN1, absN2);
+        int absLowerNumber = Math.min(absN1, absN2);
+        int lcm = absHigherNumber;
+        while (lcm % absLowerNumber != 0) {
+            lcm += absHigherNumber;
+        }
+        return lcm;
+    }
+
+    public Fraction multiply(Fraction otherFraction){
+        return new Fraction(this.numerator * otherFraction.getNumerator(),
+                this.denominator * otherFraction.getDenominator());
+    }
+
+    public Fraction divide(Fraction otherFraction){
+        return new Fraction(this.numerator * otherFraction.getDenominator(),
+                this.denominator * otherFraction.getNumerator());
     }
 
     @Override
