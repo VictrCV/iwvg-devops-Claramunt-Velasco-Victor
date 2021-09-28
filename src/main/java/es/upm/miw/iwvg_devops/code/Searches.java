@@ -10,5 +10,14 @@ public class Searches {
                         .anyMatch(Fraction::isImproper))
                 .map(User::getFamilyName);
     }
+
+    public Fraction findFirstProperFractionByUserId(String id){
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream())
+                .filter(Fraction::isProper)
+                .findFirst()
+                .orElse(new Fraction());
+    }
     
 }
