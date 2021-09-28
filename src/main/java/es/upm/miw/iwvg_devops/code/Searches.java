@@ -19,5 +19,13 @@ public class Searches {
                 .findFirst()
                 .orElse(new Fraction());
     }
+
+    public Fraction findFractionDivisionByUserId(String id){
+        return new UsersDatabase().findAll()
+                .filter(user -> id.equals(user.getId()))
+                .flatMap(user -> user.getFractions().stream())
+                .reduce(Fraction::divide)
+                .orElse(new Fraction());
+    }
     
 }
