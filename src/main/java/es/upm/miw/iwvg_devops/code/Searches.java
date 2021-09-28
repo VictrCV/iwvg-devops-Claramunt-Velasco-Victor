@@ -27,5 +27,12 @@ public class Searches {
                 .reduce(Fraction::divide)
                 .orElse(new Fraction());
     }
-    
+
+    public Stream<String> findUserFamilyNameInitialBySomeProperFraction(){
+        return new UsersDatabase().findAll()
+                .filter(user -> user.getFractions().stream()
+                        .anyMatch(Fraction::isProper))
+                .map(User::familyNameInitial);
+    }
+
 }
