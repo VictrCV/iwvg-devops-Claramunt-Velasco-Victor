@@ -53,7 +53,12 @@ public class UserTest {
     }
 
     @Test
-    void testInitials(){
-        assertEquals("A.", this.user.initials());
+    void testNameInitial(){
+        assertEquals("A.", this.user.nameInitial());
+    }
+
+    @Test
+    void testFamilyNameInitial(){
+        assertEquals("L.", this.user.familyNameInitial());
     }
 }
