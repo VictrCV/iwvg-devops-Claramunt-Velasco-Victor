@@ -11,7 +11,7 @@ public class Searches {
                 .map(User::getFamilyName);
     }
 
-    public Fraction findFirstProperFractionByUserId(String id){
+    public Fraction findFirstProperFractionByUserId(String id) {
         return new UsersDatabase().findAll()
                 .filter(user -> id.equals(user.getId()))
                 .flatMap(user -> user.getFractions().stream())
@@ -20,7 +20,7 @@ public class Searches {
                 .orElse(new Fraction());
     }
 
-    public Fraction findFractionDivisionByUserId(String id){
+    public Fraction findFractionDivisionByUserId(String id) {
         return new UsersDatabase().findAll()
                 .filter(user -> id.equals(user.getId()))
                 .flatMap(user -> user.getFractions().stream())
@@ -28,7 +28,7 @@ public class Searches {
                 .orElse(new Fraction());
     }
 
-    public Stream<String> findUserFamilyNameInitialBySomeProperFraction(){
+    public Stream<String> findUserFamilyNameInitialBySomeProperFraction() {
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
                         .anyMatch(Fraction::isProper))
