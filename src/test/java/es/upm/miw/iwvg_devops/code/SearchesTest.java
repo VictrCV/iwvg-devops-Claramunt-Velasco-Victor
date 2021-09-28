@@ -15,4 +15,10 @@ public class SearchesTest {
                 .collect(Collectors.toList()));
     }
 
+    @Test
+    void testFindFirstProperFractionByUserId() {
+        assertEquals(-1, new Searches().findFirstProperFractionByUserId("2").getNumerator());
+        assertEquals(5, new Searches().findFirstProperFractionByUserId("2").getDenominator());
+    }
+
 }
