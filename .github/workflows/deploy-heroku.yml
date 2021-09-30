@@ -1,13 +1,13 @@
 name: CD - Heroku
 on:
   push:
-    branches: [master]
+    branches: [ master ]
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with: {fetch-depth: 0}
+        with: { fetch-depth: 0 }
       - uses: akhileshns/heroku-deploy@v3.6.8 # This is the action
         with:
           heroku_email: "victor.claramuntv@alumnos.upm.es"
