@@ -59,36 +59,36 @@ public class Fraction {
         return (double) this.numerator / this.denominator;
     }
 
-    public boolean isProper(){
+    public boolean isProper() {
         return this.numerator < this.denominator;
     }
 
-    public boolean isImproper(){
+    public boolean isImproper() {
         return !isProper();
     }
 
-    public boolean isEquivalent(Fraction otherFraction){
+    public boolean isEquivalent(Fraction otherFraction) {
         return this.numerator * otherFraction.getDenominator() == this.denominator * otherFraction.getNumerator();
     }
 
-    public Fraction add(Fraction otherFraction){
+    public Fraction add(Fraction otherFraction) {
         if (this.denominator == otherFraction.getDenominator())
             return new Fraction(this.numerator + otherFraction.numerator, this.denominator);
-        else{
+        else {
             int denominator = lcm(this.denominator, otherFraction.getDenominator());
-            int numerator = denominator/this.denominator * this.numerator +
-                    denominator/otherFraction.getDenominator() * otherFraction.getNumerator();
+            int numerator = denominator / this.denominator * this.numerator +
+                    denominator / otherFraction.getDenominator() * otherFraction.getNumerator();
             return simplify(new Fraction(numerator, denominator));
         }
     }
 
-    public Fraction multiply(Fraction otherFraction){
+    public Fraction multiply(Fraction otherFraction) {
         int newNum = this.numerator * otherFraction.getNumerator();
         int newDen = this.denominator * otherFraction.getDenominator();
         return simplify(new Fraction(newNum, newDen));
     }
 
-    public Fraction divide(Fraction otherFraction){
+    public Fraction divide(Fraction otherFraction) {
         int newNum = this.numerator * otherFraction.getDenominator();
         int newDen = this.denominator * otherFraction.getNumerator();
         return simplify(new Fraction(newNum, newDen));
@@ -115,7 +115,7 @@ public class Fraction {
 
     private Fraction simplify(Fraction fraction) {
         int gcd = gcd(fraction.getNumerator(), fraction.getDenominator());
-        return new Fraction(fraction.getNumerator()/gcd, fraction.getDenominator()/gcd);
+        return new Fraction(fraction.getNumerator() / gcd, fraction.getDenominator() / gcd);
     }
 
     @Override
