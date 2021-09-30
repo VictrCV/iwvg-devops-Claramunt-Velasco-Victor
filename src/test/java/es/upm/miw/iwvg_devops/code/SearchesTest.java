@@ -22,13 +22,13 @@ public class SearchesTest {
     }
 
     @Test
-    void testFindFractionDivisionByUserId(){
+    void testFindFractionDivisionByUserId() {
         assertEquals(-4, new Searches().findFractionDivisionByUserId("3").getNumerator());
         assertEquals(5, new Searches().findFractionDivisionByUserId("3").getDenominator());
     }
 
     @Test
-    void testFindUserFamilyNameInitialBySomeProperFraction(){
+    void testFindUserFamilyNameInitialBySomeProperFraction() {
         assertEquals(List.of("F.", "B.", "L.", "B."), new Searches().findUserFamilyNameInitialBySomeProperFraction()
                 .collect(Collectors.toList()));
     }

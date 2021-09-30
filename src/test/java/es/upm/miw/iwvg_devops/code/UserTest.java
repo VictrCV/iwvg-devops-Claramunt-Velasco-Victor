@@ -25,7 +25,7 @@ public class UserTest {
     }
 
     @Test
-    void testUserWithoutParams(){
+    void testUserWithoutParams() {
         this.user = new User();
         assertNull(this.user.getId());
         assertNull(this.user.getName());
@@ -34,7 +34,7 @@ public class UserTest {
     }
 
     @Test
-    void testUserWithParams(){
+    void testUserWithParams() {
         assertEquals("1", this.user.getId());
         assertEquals("Ada", this.user.getName());
         assertEquals("Lovelace", this.user.getFamilyName());
@@ -42,23 +42,23 @@ public class UserTest {
     }
 
     @Test
-    void testAddFraction(){
+    void testAddFraction() {
         this.user.addFraction(new Fraction());
         assertEquals(4, this.user.getFractions().size());
     }
 
     @Test
-    void testFullName(){
+    void testFullName() {
         assertEquals("Ada Lovelace", this.user.fullName());
     }
 
     @Test
-    void testNameInitial(){
+    void testNameInitial() {
         assertEquals("A.", this.user.nameInitial());
     }
 
     @Test
-    void testFamilyNameInitial(){
+    void testFamilyNameInitial() {
         assertEquals("L.", this.user.familyNameInitial());
     }
 }
